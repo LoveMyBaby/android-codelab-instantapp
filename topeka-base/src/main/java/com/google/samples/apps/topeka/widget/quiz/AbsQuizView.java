@@ -41,7 +41,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.samples.apps.topeka.R;
-import com.google.samples.apps.topeka.activity.QuizActivity;
 import com.google.samples.apps.topeka.helper.ApiLevelHelper;
 import com.google.samples.apps.topeka.helper.ViewUtils;
 import com.google.samples.apps.topeka.model.Category;
@@ -60,7 +59,7 @@ import com.google.samples.apps.topeka.widget.fab.CheckableFab;
  * </p>
  *
  * @param <Q> The type of {@link com.google.samples.apps.topeka.model.quiz.Quiz} you want to
- * display.
+ *            display.
  */
 public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout {
 
@@ -82,9 +81,9 @@ public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout {
     /**
      * Enables creation of views for quizzes.
      *
-     * @param context The context for this view.
+     * @param context  The context for this view.
      * @param category The {@link Category} this view is running in.
-     * @param quiz The actual {@link Quiz} that is going to be displayed.
+     * @param quiz     The actual {@link Quiz} that is going to be displayed.
      */
     public AbsQuizView(Context context, Category category, Q quiz) {
         super(context);
@@ -280,7 +279,7 @@ public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout {
      * @param answerCorrect <code>true</code> if the answer was correct, else <code>false</code>.
      */
     private void performScoreAnimation(final boolean answerCorrect) {
-        ((QuizActivity) getContext()).lockIdlingResource();
+//        ((QuizActivity) getContext()).lockIdlingResource();
         // Decide which background color to use.
         final int backgroundColor = ContextCompat.getColor(getContext(),
                 answerCorrect ? R.color.green : R.color.red);
@@ -347,8 +346,8 @@ public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout {
             @Override
             public void run() {
                 mCategory.setScore(getQuiz(), answerCorrect);
-                if (getContext() instanceof QuizActivity) {
-                    ((QuizActivity) getContext()).proceed();
+                if (getContext() instanceof NextStepHandler) {
+                    ((NextStepHandler) getContext()).proceed();
                 }
             }
         };
@@ -358,5 +357,9 @@ public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout {
 
     private void setMinHeightInternal(View view) {
         view.setMinimumHeight(getResources().getDimensionPixelSize(R.dimen.min_height_question));
+    }
+
+    public interface NextStepHandler {
+        void proceed();
     }
 }

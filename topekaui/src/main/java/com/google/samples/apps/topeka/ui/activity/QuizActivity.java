@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.topeka.activity;
+package com.google.samples.apps.topeka.ui.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -49,19 +49,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.samples.apps.topeka.R;
-import com.google.samples.apps.topeka.fragment.QuizFragment;
+import com.google.samples.apps.topeka.ui.fragment.QuizFragment;
 import com.google.samples.apps.topeka.helper.ApiLevelHelper;
 import com.google.samples.apps.topeka.helper.ViewUtils;
 import com.google.samples.apps.topeka.model.Category;
 import com.google.samples.apps.topeka.model.JsonAttributes;
 import com.google.samples.apps.topeka.persistence.TopekaDatabaseHelper;
 import com.google.samples.apps.topeka.widget.TextSharedElementCallback;
+import com.google.samples.apps.topeka.widget.quiz.AbsQuizView;
 
 import java.util.List;
 
 import static com.google.samples.apps.topeka.adapter.CategoryAdapter.DRAWABLE;
 
-public class QuizActivity extends AppCompatActivity {
+public class QuizActivity extends AppCompatActivity implements AbsQuizView.NextStepHandler{
 
     private static final String TAG = "QuizActivity";
     private static final String IMAGE_CATEGORY = "image_category_";

@@ -29,7 +29,7 @@
             tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
 
         <activity
-                android:name=".activity.SignInActivity"
+                android:name=".ui.activity.SignInActivity"
                 android:theme="@style/Topeka.SignInActivity"
                 android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -61,7 +61,7 @@
         </activity>
 
         <activity
-                android:name=".activity.CategorySelectionActivity"
+                android:name=".ui.activity.CategorySelectionActivity"
                 android:theme="@style/Topeka.CategorySelectionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -88,7 +88,7 @@
         </activity>
 
         <activity
-                android:name=".activity.QuizActivity"
+                android:name=".ui.activity.QuizActivity"
                 android:launchMode="singleTop"
                 android:windowSoftInputMode="adjustPan"
                 android:theme="@style/Topeka.QuizActivity"/>
