@@ -24,8 +24,8 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.samples.apps.topeka.R;
-import com.google.samples.apps.topeka.ui.fragment.SignInFragment;
 import com.google.samples.apps.topeka.helper.PreferencesHelper;
+import com.google.samples.apps.topeka.ui.fragment.SignInFragment;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -50,6 +50,11 @@ public class SignInActivity extends AppCompatActivity {
                     .replace(R.id.sign_in_container, SignInFragment.newInstance(edit)).commit();
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
